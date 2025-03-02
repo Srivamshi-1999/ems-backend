@@ -2,6 +2,7 @@ package com.dunizer.ems_backend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,4 +57,12 @@ public class EmployeeController {
         return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
     }
 
+    // Build Delete Employee REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteEmployee(@PathVariable("id") Long employeeId) {
+
+        employeeService.deleteEmployee(employeeId);
+
+        return new ResponseEntity<>("Employee Deleted successfully",HttpStatus.OK);
+    }
 }

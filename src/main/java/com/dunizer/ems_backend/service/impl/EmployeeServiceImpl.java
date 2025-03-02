@@ -57,4 +57,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         
     }
 
+    @Override
+    public void deleteEmployee(Long employeeId) {
+        // TODO Auto-generated method stub
+        Employee employee = employeeRepository.findById(employeeId)
+            .orElseThrow(() -> new RuntimeException("Employee not found with given id: " + employeeId));
+        employeeRepository.deleteById(employeeId);
+    }
+
 }
